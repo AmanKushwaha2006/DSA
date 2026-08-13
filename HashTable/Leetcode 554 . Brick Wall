@@ -1,0 +1,18 @@
+class Solution {
+    public int leastBricks(List<List<Integer>> arr) {
+        HashMap<Integer , Integer> mp = new HashMap<>();
+        
+        for (int i = 0; i < arr.size(); i++) {
+            int psum = 0 ;
+            for (int j = 0; j < arr.get(i).size()-1; j++) {
+               psum += arr.get(i).get(j);
+               mp.put(psum , mp.getOrDefault(psum , 0)+1);
+            }
+        }
+        int max = 0;
+        for(int keys:mp.keySet()){
+            max = Math.max( max , mp.get(keys));
+        }
+        return arr.size()-max;
+    }
+}

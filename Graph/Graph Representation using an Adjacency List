@@ -1,0 +1,59 @@
+import java.util.*;
+
+public class Main {
+
+    static ArrayList<ArrayList<Integer>> adj;
+
+    // Add an edge
+    static void addEdge(int u, int v) {
+        adj.get(u).add(v);
+        adj.get(v).add(u); // Remove this for directed graph
+    }
+
+    // Delete an edge
+    static void deleteEdge(int u, int v) {
+        adj.get(u).remove(Integer.valueOf(v));
+        adj.get(v).remove(Integer.valueOf(u)); // Remove for directed graph
+    }
+
+    // Display graph
+    static void displayGraph(int V) {
+        for (int i = 0; i < V; i++) {
+            System.out.print(i + " -> ");
+
+            for (int node : adj.get(i)) {
+                System.out.print(node + " ");
+            }
+
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int V = 5;
+
+        // Create adjacency list
+        adj = new ArrayList<>();
+
+        for (int i = 0; i < V; i++) {
+            adj.add(new ArrayList<>());
+        }
+
+        // Add edges
+        addEdge(0, 1);
+        addEdge(0, 2);
+        addEdge(1, 3);
+        addEdge(2, 3);
+        addEdge(3, 4);
+
+        System.out.println("Graph:");
+        displayGraph(V);
+
+        // Delete edge
+        deleteEdge(2, 3);
+
+        System.out.println("\nAfter deleting edge 2 - 3:");
+        displayGraph(V);
+    }
+}

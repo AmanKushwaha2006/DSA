@@ -14,7 +14,7 @@ Currently, the repository covers:
 * Searching
 * Linked List
 * Stack & Queue
-* Recursion
+* Binary Search
 * Hashing
 * Trees
 * Graphs

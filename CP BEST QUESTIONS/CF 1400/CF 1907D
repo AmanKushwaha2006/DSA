@@ -1,0 +1,119 @@
+import java.io.*;
+ 
+public class Main {
+ 
+    static int[] segmentStart = new int[200000];
+    static int[] segmentEnd = new int[200000];
+ 
+    static boolean isReachableWithJump(int segmentCount, int maxJump) {
+        int currentMinPosition = 0;
+        int currentMaxPosition = 0;
+ 
+        for (int i = 0; i < segmentCount; i++) {
+            currentMinPosition -= maxJump;
+            currentMaxPosition += maxJump;
+ 
+            int reachableStart = Math.max(
+                currentMinPosition,
+                segmentStart[i]
+            );
+ 
+            int reachableEnd = Math.min(
+                currentMaxPosition,
+                segmentEnd[i]
+            );
+ 
+            if (reachableStart > reachableEnd) {
+                return false;
+            }
+ 
+            currentMinPosition = reachableStart;
+            currentMaxPosition = reachableEnd;
+        }
+ 
+        return true;
+    }
+ 
+    static void solveTestCase(FastScanner fs) throws IOException {
+        int segmentCount = fs.nextInt();
+ 
+        for (int i = 0; i < segmentCount; i++) {
+            segmentStart[i] = fs.nextInt();
+            segmentEnd[i] = fs.nextInt();
+        }
+ 
+        int low = 0;
+        int high = 1_000_000_000;
+ 
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+ 
+            if (isReachableWithJump(segmentCount, mid)) {
+                high = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+ 
+        System.out.println(low);
+    }
+ 
+    public static void main(String[] args) throws Exception {
+        FastScanner fs = new FastScanner(System.in);
+ 
+        int testCases = fs.nextInt();
+ 
+        while (testCases-- > 0) {
+            solveTestCase(fs);
+        }
+    }
+ 
+    static class FastScanner {
+ 
+        private final InputStream in;
+        private final byte[] buffer = new byte[1 << 16];
+        private int ptr = 0;
+        private int len = 0;
+ 
+        FastScanner(InputStream in) {
+            this.in = in;
+        }
+ 
+        private int read() throws IOException {
+            if (ptr >= len) {
+                len = in.read(buffer);
+                ptr = 0;
+ 
+                if (len <= 0) {
+                    return -1;
+                }
+            }
+ 
+            return buffer[ptr++];
+        }
+ 
+        int nextInt() throws IOException {
+            int c;
+ 
+            do {
+                c = read();
+            } while (c <= ' ');
+ 
+            int sign = 1;
+ 
+            if (c == '-') {
+                sign = -1;
+                c = read();
+            }
+ 
+            int result = 0;
+ 
+            while (c > ' ') {
+                result = result * 10 + (c - '0');
+                c = read();
+            }
+ 
+            return result * sign;
+        }
+    }
+}

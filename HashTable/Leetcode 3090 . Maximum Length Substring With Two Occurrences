@@ -1,3 +1,18 @@
+import java.util.*;
+
+/**
+ * Problem: LeetCode 3090. Maximum Length Substring With Two Occurrences
+ * 
+ * Approach:
+ * - Use a sliding window approach with two pointers (i and j).
+ * - Maintain a HashMap to keep track of the frequency of characters in the current window.
+ * - Iterate through the string with the right pointer 'j'. If any character count exceeds 2, shrink the window from the left by moving 'i' and updating the map until the character count is back to 2 or less.
+ * - Keep track of the maximum length of a valid window encountered.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the length of the string. Each character is visited at most twice (once by j and once by i).
+ * - Space Complexity: O(1) or O(26) since the string only contains lowercase English letters, the map will store at most 26 key-value pairs.
+ */
 class Solution {
     public int maximumLengthSubstring(String s) {
         Map<Character, Integer> count = new HashMap<>();

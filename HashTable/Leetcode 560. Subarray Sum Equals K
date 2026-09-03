@@ -1,3 +1,19 @@
+import java.util.*;
+
+/**
+ * Problem: LeetCode 560. Subarray Sum Equals K
+ * 
+ * Approach:
+ * - Use a prefix sum approach combined with a HashMap to achieve an O(N) solution.
+ * - We maintain a running sum (`currSum`) as we iterate through the array.
+ * - If there is a subarray ending at the current index whose sum is `k`, it means there must be a previous prefix sum equal to `currSum - k`.
+ * - We store the frequencies of all prefix sums in a HashMap. Initially, we put `(0, 1)` into the map to handle the case where the prefix sum itself equals `k`.
+ * - For each element, we add the frequency of `currSum - k` to our answer and update the frequency of `currSum` in the map.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the number of elements in the array. We iterate through the array once and perform O(1) map operations.
+ * - Space Complexity: O(N) to store the prefix sums in the HashMap.
+ */
 class Solution {
     public int subarraySum(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();

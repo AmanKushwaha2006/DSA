@@ -13,6 +13,20 @@
  *     }
  * }
  */
+/**
+ * Problem: LeetCode 112. Path Sum
+ * 
+ * Approach:
+ * - Use a recursive Depth First Search (DFS).
+ * - Subtract the current node's value from the 'targetSum' as we traverse down the tree.
+ * - If we reach a leaf node (a node with no left or right child), we check if the remaining 'targetSum' equals the leaf node's value.
+ * - If it does, we found a valid path and return true.
+ * - Recursively check the left and right subtrees. If either returns true, the overall answer is true.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the number of nodes in the tree. We might need to visit every node in the worst case.
+ * - Space Complexity: O(H), where H is the height of the tree. This accounts for the recursion stack. In the worst case (skewed tree), it can be O(N).
+ */
 class Solution {
     public boolean hasPathSum(TreeNode root, int targetSum) {
 

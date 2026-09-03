@@ -1,5 +1,19 @@
 import java.util.*;
 
+/**
+ * Problem/Concept: Graph Representation using an Adjacency List
+ * 
+ * Approach:
+ * - An Adjacency List is represented as an array or list of lists (e.g., ArrayList<ArrayList<Integer>>).
+ * - Each index represents a vertex, and its corresponding list stores all the adjacent vertices.
+ * - It is space-efficient for sparse graphs as it only stores the edges that exist.
+ * 
+ * Complexity:
+ * - Time Complexity:
+ *   - Add Edge: O(1) amortized
+ *   - Remove Edge: O(V) in the worst case (searching through the list)
+ * - Space Complexity: O(V + E), where V is the number of vertices and E is the number of edges.
+ */
 public class Main {
 
     static ArrayList<ArrayList<Integer>> adj;

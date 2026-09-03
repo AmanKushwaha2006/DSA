@@ -13,6 +13,20 @@
  *     }
  * }
  */
+/**
+ * Problem: LeetCode 124. Binary Tree Maximum Path Sum
+ * 
+ * Approach:
+ * - A path can start and end at any node in the tree.
+ * - We use a recursive post-order traversal to calculate the maximum path sum originating from the current node's left and right subtrees.
+ * - If a subtree's path sum is negative, we ignore it (take 0 instead) because adding a negative sum would only decrease our overall path sum.
+ * - At each node, we calculate the `currentPath` sum which is `root.val + left + right`. We update our global `maxSum` if `currentPath` is greater.
+ * - The recursive function must return the maximum path sum of one of its branches (either left or right) plus its own value to its parent node.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the number of nodes. We visit each node exactly once.
+ * - Space Complexity: O(H), where H is the height of the tree, used by the recursion stack.
+ */
 class Solution {
 
     int maxSum = Integer.MIN_VALUE;

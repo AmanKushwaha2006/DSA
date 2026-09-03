@@ -1,3 +1,20 @@
+import java.util.*;
+
+/**
+ * Problem: LeetCode 347. Top K Frequent Elements
+ * 
+ * Approach:
+ * - Use Bucket Sort to achieve an O(N) time complexity.
+ * - First, use a HashMap to count the frequency of each element in the array.
+ * - Create an array of lists (`bucket`) where the index represents the frequency, and the value is a list of numbers having that frequency.
+ * - Since the maximum frequency can be at most the length of the array, the bucket size is `nums.length + 1`.
+ * - Populate the bucket array by iterating over the map.
+ * - Traverse the bucket array from right to left (highest frequency to lowest) and collect elements until we have K elements.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the number of elements in the array.
+ * - Space Complexity: O(N) to store the HashMap and the bucket array.
+ */
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
       

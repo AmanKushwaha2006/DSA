@@ -1,5 +1,23 @@
 import java.io.*;
  
+/**
+ * Problem: Codeforces 1907D - Jumping Through Segments
+ * 
+ * Approach:
+ * - This is a classic "Binary Search on Answer" problem.
+ * - We want to find the minimum possible maximum jump size `k` to reach all segments sequentially.
+ * - The binary search space is from 0 to 10^9 (the maximum possible coordinate/jump).
+ * - For a given jump size `mid`, we can validate if it's possible using the `isReachableWithJump` function.
+ * - In `isReachableWithJump`, we maintain a reachable range `[currentMinPosition, currentMaxPosition]`.
+ * - For each step, we expand our reachable range by `mid` in both directions.
+ * - Then, we intersect our reachable range with the required segment `[segmentStart, segmentEnd]`.
+ * - If the intersection is valid (start <= end), we update our reachable range to this intersection and proceed to the next segment.
+ * - If at any point the intersection is invalid, it means the jump size `mid` is too small.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N log(MAX_K)), where N is the number of segments and MAX_K is 10^9. The binary search takes ~30 iterations, and each check takes O(N) time.
+ * - Space Complexity: O(N) to store the segments.
+ */
 public class Main {
  
     static int[] segmentStart = new int[200000];

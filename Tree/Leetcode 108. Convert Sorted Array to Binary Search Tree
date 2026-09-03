@@ -13,6 +13,18 @@
  *     }
  * }
  */
+/**
+ * Problem: LeetCode 108. Convert Sorted Array to Binary Search Tree
+ * 
+ * Approach:
+ * - To construct a height-balanced BST, the root must be the middle element of the sorted array.
+ * - This ensures that roughly half of the elements will be in the left subtree and the other half in the right subtree.
+ * - We use a divide-and-conquer strategy: find the middle element, create a node, and recursively construct the left subtree from the left half of the array, and the right subtree from the right half.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the number of elements in the array. We visit each element exactly once to create a node.
+ * - Space Complexity: O(log N) for the recursion stack space, as the tree is guaranteed to be height-balanced.
+ */
 class Solution {
 
     public TreeNode sortedArrayToBST(int[] nums) {

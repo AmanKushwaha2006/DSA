@@ -1,5 +1,20 @@
 import java.util.*;
 
+/**
+ * Problem: LeetCode 146. LRU Cache
+ * 
+ * Approach:
+ * - Use a combination of a HashMap (for O(1) lookups) and a Doubly Linked List (for O(1) insertions, deletions, and ordering).
+ * - The HashMap stores the key and a reference to the corresponding Node in the linked list.
+ * - The Doubly Linked List maintains the Least Recently Used (LRU) order. The Most Recently Used item is kept at the tail (or head, depending on implementation; here it's added before the tail).
+ * - The Least Recently Used item is at the head (after the dummy head).
+ * - When an item is accessed (get) or updated (put), we move it to the Most Recently Used position.
+ * - When capacity is exceeded during a 'put', we remove the Least Recently Used item from both the list and the map.
+ * 
+ * Complexity:
+ * - Time Complexity: O(1) for both get() and put() operations.
+ * - Space Complexity: O(capacity) to store the key-value pairs in the HashMap and Doubly Linked List.
+ */
 class LRUCache {
 
     class Node {

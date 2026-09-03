@@ -1,3 +1,15 @@
+/**
+ * Problem: LeetCode 49. Group Anagrams
+ * 
+ * Approach:
+ * - Use a HashMap where the key is the sorted version of a string, and the value is a list of all original strings that match that sorted string.
+ * - Iterate through the array of strings, sort each string to form the key, and add the original string to the corresponding list in the map.
+ * - Finally, return all the values (lists of grouped anagrams) from the HashMap.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N * K log K), where N is the number of strings and K is the maximum length of a string. Sorting each string takes O(K log K) time.
+ * - Space Complexity: O(N * K) to store the result in the HashMap.
+ */
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
 

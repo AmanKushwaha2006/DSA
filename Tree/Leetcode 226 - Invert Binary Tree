@@ -13,6 +13,19 @@
  *     }
  * }
  */
+/**
+ * Problem: LeetCode 226. Invert Binary Tree
+ * 
+ * Approach:
+ * - We can invert a binary tree recursively using a post-order traversal (process children, then node).
+ * - Recursively invert the left subtree and the right subtree.
+ * - Once both subtrees are inverted, swap the left child and right child of the current root.
+ * - Return the root.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the number of nodes in the tree. Each node is visited and its children are swapped once.
+ * - Space Complexity: O(H), where H is the height of the tree, due to the recursion stack. In the worst case, it can be O(N).
+ */
 class Solution {
     public TreeNode invertTree(TreeNode root) {
         if(root == null){

@@ -13,6 +13,20 @@
  *     }
  * }
  */
+/**
+ * Problem: LeetCode 114. Flatten Binary Tree to Linked List
+ * 
+ * Approach:
+ * - We can solve this using a modified post-order traversal (Right, Left, Root).
+ * - We maintain a global or instance variable 'prev' to keep track of the previously processed node.
+ * - By traversing the right subtree first, then the left subtree, and finally the root, we can easily rewire the pointers.
+ * - For each node, we set its right child to 'prev' and its left child to null. Then we update 'prev' to be the current node.
+ * - This effectively flattens the tree "in-place" without needing extra data structures like a queue or stack.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the number of nodes in the tree. We visit each node exactly once.
+ * - Space Complexity: O(H), where H is the height of the tree, representing the recursion stack.
+ */
 class Solution {
 
     TreeNode prev = null;

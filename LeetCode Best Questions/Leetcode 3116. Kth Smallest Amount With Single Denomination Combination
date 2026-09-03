@@ -1,5 +1,20 @@
 import java.util.Arrays;
 
+/**
+ * Problem: LeetCode 3116. Kth Smallest Amount With Single Denomination Combination
+ * 
+ * Approach:
+ * - Use Binary Search on the answer combined with the Principle of Inclusion-Exclusion (PIE).
+ * - First, filter out any coin denominations that are multiples of other denominations to optimize the process.
+ * - The binary search space ranges from 'k' to 'coins[0] * k' (maximum possible amount if we only use the smallest coin).
+ * - For a given amount 'mid', we use PIE to count how many valid amounts can be formed using the given coins that are <= mid.
+ * - If the count is >= k, it means 'mid' is large enough, so we can search in the lower half (r = mid). Otherwise, search the upper half.
+ * - The PIE is implemented using Gosper's hack / bit manipulation to iterate through combinations of sizes 1 to n to calculate LCMs and add/subtract counts.
+ * 
+ * Complexity:
+ * - Time Complexity: O(2^N * log(MAX_ANS)), where N is the number of coins (max 15). The binary search takes log(MAX_ANS) iterations, and each check takes 2^N in the worst case to iterate through subsets.
+ * - Space Complexity: O(N) for storing the optimized coins array.
+ */
 class Solution {
     boolean check(long mid, int[] A, int n, int k) {
         long tot = 0;

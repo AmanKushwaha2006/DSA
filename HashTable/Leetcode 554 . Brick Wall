@@ -1,3 +1,19 @@
+import java.util.*;
+
+/**
+ * Problem: LeetCode 554. Brick Wall
+ * 
+ * Approach:
+ * - We want to draw a vertical line that crosses the minimum number of bricks. This is equivalent to drawing a line through the maximum number of brick edges (gaps).
+ * - We can keep track of the prefix sum of brick lengths for each row. The prefix sum represents a vertical edge position.
+ * - Use a HashMap to count the frequency of each edge position. We avoid including the last edge (the right edge of the wall) as the line cannot be drawn there.
+ * - Find the edge position with the maximum frequency.
+ * - The minimum number of crossed bricks is the total number of rows (wall height) minus the maximum edge frequency.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the total number of bricks across all rows. We process each brick exactly once.
+ * - Space Complexity: O(W), where W is the width of the wall. In the worst case, we might store many distinct prefix sums in the HashMap.
+ */
 class Solution {
     public int leastBricks(List<List<Integer>> arr) {
         HashMap<Integer , Integer> mp = new HashMap<>();

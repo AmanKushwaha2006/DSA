@@ -1,3 +1,18 @@
+import java.util.*;
+
+/**
+ * Problem: LeetCode 128. Longest Consecutive Subsequence
+ * 
+ * Approach:
+ * - Use a HashMap to store each number and a boolean flag indicating if it has been visited/processed.
+ * - Iterate through the array and try to expand the sequence in both directions (num+1, num+2... and num-1, num-2...) for each unvisited number.
+ * - Mark numbers as visited as they are included in a sequence to avoid redundant work.
+ * - Keep track of the maximum length of consecutive numbers found.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the number of elements in the array. Each number is visited and processed at most twice.
+ * - Space Complexity: O(N) to store the numbers in the HashMap.
+ */
 class Solution {
     public int longestConsecutive(int[] nums) {
         int longest = 0;

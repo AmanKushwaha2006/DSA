@@ -7,6 +7,20 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+/**
+ * Problem: LeetCode 236. Lowest Common Ancestor of a Binary Tree
+ * 
+ * Approach:
+ * - Use Depth First Search (DFS) / Post-order traversal.
+ * - Base case: if the root is null, or if it matches either 'p' or 'q', return the root itself.
+ * - Recursively find the LCA in the left and right subtrees.
+ * - If both left and right recursive calls return non-null, it means 'p' and 'q' are found in different subtrees. Therefore, the current root is the LCA.
+ * - If only one of the subtrees returns a non-null value, it means both 'p' and 'q' are located in that subtree, so we pass that non-null value up.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the number of nodes in the binary tree. In the worst case, we might visit all nodes.
+ * - Space Complexity: O(H), where H is the height of the tree, representing the recursion stack depth. In the worst case (skewed tree), it can be O(N).
+ */
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root == null ){

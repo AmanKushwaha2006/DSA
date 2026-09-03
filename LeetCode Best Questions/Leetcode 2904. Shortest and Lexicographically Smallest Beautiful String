@@ -1,3 +1,17 @@
+/**
+ * Problem: LeetCode 2904. Shortest and Lexicographically Smallest Beautiful String
+ * 
+ * Approach:
+ * - A string is beautiful if it contains exactly 'k' ones.
+ * - We can find all substrings that have exactly 'k' ones.
+ * - Since we want the shortest length first, and then the lexicographically smallest among those of the same length, we can check all possible substrings starting at 'i' and ending at 'j'.
+ * - Iterate through all substrings. If the count of '1's reaches 'k', we compare the current substring with our best answer so far and update it if it's shorter or lexicographically smaller.
+ * - Stop expanding the inner loop if the count of '1's exceeds 'k' because adding more characters will never make it valid again.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N^2), where N is the length of the string, because we explore all possible substrings.
+ * - Space Complexity: O(N) to store the result string and StringBuilder for current substring.
+ */
 class Solution {
     public String shortestBeautifulSubstring(String s, int k) {
         String ans = "";

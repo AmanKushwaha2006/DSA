@@ -1,5 +1,21 @@
 import java.util.*;
 
+/**
+ * Problem/Concept: Graph Representation using an Adjacency Matrix
+ * 
+ * Approach:
+ * - An Adjacency Matrix is a 2D array of size V x V where V is the number of vertices.
+ * - If there is an edge from vertex u to vertex v, we set adj[u][v] = 1 (and adj[v][u] = 1 for undirected graphs).
+ * - Adding or deleting an edge takes O(1) time.
+ * - Adding or deleting a vertex requires creating a new matrix of different size and copying elements, which takes O(V^2) time.
+ * 
+ * Complexity:
+ * - Time Complexity: 
+ *   - Add/Remove Edge: O(1)
+ *   - Check Edge: O(1)
+ *   - Add/Remove Vertex: O(V^2)
+ * - Space Complexity: O(V^2), where V is the number of vertices, to store the matrix.
+ */
 public class Main {
 
     static class Graph {

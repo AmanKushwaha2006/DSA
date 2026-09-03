@@ -13,6 +13,19 @@
  *     }
  * }
  */
+/**
+ * Problem: LeetCode 129. Sum Root to Leaf Numbers
+ * 
+ * Approach:
+ * - Use Depth First Search (DFS) to traverse from the root down to the leaves.
+ * - Maintain a `currnum` variable that accumulates the number formed by the path so far.
+ * - As we go down a level, we multiply the current accumulated number by 10 and add the current node's value.
+ * - When we reach a leaf node (both children are null), we add the `currnum` to our global `finalsum`.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N), where N is the number of nodes in the tree. We visit each node exactly once.
+ * - Space Complexity: O(H), where H is the height of the tree. This is for the recursive call stack.
+ */
 class Solution {
 
     int finalsum = 0;

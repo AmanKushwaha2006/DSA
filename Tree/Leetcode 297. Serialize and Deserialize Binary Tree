@@ -1,3 +1,20 @@
+import java.util.*;
+
+/**
+ * Problem: LeetCode 297. Serialize and Deserialize Binary Tree
+ * 
+ * Approach:
+ * - Serialization: Convert the tree into a string representation using Breadth-First Search (BFS) / Level Order Traversal.
+ *   - Use a Queue. Append the node's value to a StringBuilder. If a node is null, append a special character 'n'.
+ *   - Separate values using a comma (',').
+ * - Deserialization: Convert the string back to a tree.
+ *   - Split the string by commas to get an array of node values.
+ *   - Use a Queue to keep track of parent nodes. Iteratively read the next two values from the array as the left and right children for the node at the front of the queue.
+ * 
+ * Complexity:
+ * - Time Complexity: O(N) for both serialize and deserialize, where N is the number of nodes. We visit each node once.
+ * - Space Complexity: O(N) for the Queue and StringBuilder/String Array used during BFS traversal and string splitting.
+ */
 public class Codec {
 
     // Encodes a tree to a single string.
